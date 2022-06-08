@@ -19,4 +19,9 @@ public class SqlConstant {
     public static final String ACCOUNT_FIELD_ROLE_ID = "roleId";
     public static final String ACCOUNT_FIELD_STATUS = "status";
     public static final String FIELD_DELETED_BY = "";
+    public static final String FIELD_CREATED_AT = "";
+    public static final String FIELD_UPDATED_AT = "";
+    public static final String FIELD_DELETED_AT = "";
+    public static final String FIELD_CREATED_BY = "";
+    public static final String FIELD_UPDATED_BY = "";
 }

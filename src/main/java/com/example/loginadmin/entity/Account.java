@@ -1,8 +1,10 @@
 package com.example.loginadmin.entity;
 
+
 import com.example.loginadmin.entity.base.BaseEntity;
 import com.example.loginadmin.entity.entity_enum.AccountStatus;
 
+import java.nio.channels.FileLock;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 
@@ -21,6 +23,10 @@ public class Account extends BaseEntity {
     public Account() {
     }
 
+    @Override
+    public FileLock getProductValidation() {
+        return null;
+    }
 
     public Account(String fullName, String username, String email, String phoneNumber, String password, String confirmPassword, int roleId, AccountStatus status) {
         this.fullName = fullName;
@@ -155,5 +161,114 @@ public class Account extends BaseEntity {
             this.status = AccountStatus.ACTIVE;
             this.errors = new HashMap<>();
         }
+
+        public static AccountBuilder anAccount() {
+            return new AccountBuilder();
+        }
+
+        public AccountBuilder withId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public AccountBuilder withFullName(String fullName) {
+            this.fullName = fullName;
+            return this;
+        }
+
+        public AccountBuilder withUsername(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public AccountBuilder withEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public AccountBuilder withPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+            return this;
+        }
+
+        public AccountBuilder withPassword(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public AccountBuilder withConfirmPassword(String confirmPassword) {
+            this.confirmPassword = confirmPassword;
+            return this;
+        }
+
+        public AccountBuilder withRoleId(int roleId) {
+            this.roleId = roleId;
+            return this;
+        }
+
+        public AccountBuilder withStatus(AccountStatus status) {
+            this.status = status;
+            return this;
+        }
+
+        public AccountBuilder withCreatedAt(LocalDateTime createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+
+        public AccountBuilder withUpdatedAt(LocalDateTime updatedAt) {
+            this.updatedAt = updatedAt;
+            return this;
+        }
+
+        public AccountBuilder withDeletedAt(LocalDateTime deletedAt) {
+            this.deletedAt = deletedAt;
+            return this;
+        }
+
+        public AccountBuilder withCreatedBy(int createdBy) {
+            this.createdBy = createdBy;
+            return this;
+        }
+
+        public AccountBuilder withUpdatedBy(int updatedBy) {
+            this.updatedBy = updatedBy;
+            return this;
+        }
+
+        public AccountBuilder withDeletedBy(int deletedBy) {
+            this.deletedBy = deletedBy;
+            return this;
+        }
+
+        public Account build() {
+            Account account = new Account();
+            account.setId(id);
+            account.setFullName(fullName);
+            account.setUsername(username);
+            account.setEmail(email);
+            account.setPhoneNumber(phoneNumber);
+            account.setPassword(password);
+            account.setConfirmPassword(confirmPassword);
+            account.setRoleId(roleId);
+            account.setStatus(status);
+            account.setCreatedAt(createdAt);
+            account.setUpdatedAt(updatedAt);
+            account.setDeletedAt(deletedAt);
+            account.setCreatedBy(createdBy);
+            account.setUpdatedBy(updatedBy);
+            account.setDeletedBy(deletedBy);
+            account.setErrors(errors);
+            return account;
+        }
+    }
+
+    public boolean isValid() {
+        this.checkValid();
+        return errors.size() == 0;
+    }
+
+    public void checkValid() {
+
     }
 }
